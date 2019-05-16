@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="11982" started-at="2019-05-15T11:24:01Z" finished-at="2019-05-15T11:24:13Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="11982" started-at="2019-05-15T11:24:01Z" finished-at="2019-05-15T11:24:13Z">
+      <class name="e2e.runners.ECSDigitalRunner">
+        <test-method status="PASS" signature="runCukes()[pri:0, instance:e2e.runners.ECSDigitalRunner@4cf777e8]" name="runCukes" duration-ms="11897" started-at="2019-05-15T12:24:02Z" finished-at="2019-05-15T12:24:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runCukes -->
+      </class> <!-- e2e.runners.ECSDigitalRunner -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
