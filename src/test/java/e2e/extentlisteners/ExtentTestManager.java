@@ -2,7 +2,6 @@ package e2e.extentlisteners;
 
 import java.io.IOException;
 
-import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
@@ -13,7 +12,6 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 public class ExtentTestManager {
 
     public static ThreadLocal<ExtentTest> testReport = new ThreadLocal<ExtentTest>();
-    static ExtentReports extent = ExtentManager.getReporter();
 
     public static synchronized ExtentTest getTest() {
 
@@ -35,8 +33,6 @@ public class ExtentTestManager {
         String passLogg = "SCENARIO PASSED";
         Markup m = MarkupHelper.createLabel(passLogg, ExtentColor.GREEN);
         testReport.get().log(Status.PASS, m);
-
-
     }
 
     public static void logFail(String message) {
@@ -50,9 +46,9 @@ public class ExtentTestManager {
         try {
 
             testReport.get().fail("<b>" + "<font color=" + "red>" + "Screenshot of failure" + "</font>" + "</b>",
-                    MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
+                    MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.lastCapturedScreenName).build());
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
 
         String failureLogg = "SCENARIO FAILED";
@@ -66,21 +62,17 @@ public class ExtentTestManager {
         ExtentManager.captureScreenshot();
         try {
             testReport.get().info(("<b>" + "<font color=" + "green>" + "Screenshot" + "</font>" + "</b>"),
-                    MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.screenshotName).build());
+                    MediaEntityBuilder.createScreenCaptureFromPath(ExtentManager.lastCapturedScreenName).build());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         return true;
     }
 
-    public static synchronized ExtentTest startTest(String testName) {
-        return startTest(testName, "");
-    }
 
-    public static synchronized ExtentTest startTest(String testName, String desc) {
-        ExtentTest test = extent.createTest(testName, desc);
+    public static synchronized ExtentTest startTest(String testName) {
+        ExtentTest test = ExtentManager.getReporter().createTest(testName, "");
         testReport.set(test);
         return test;
     }

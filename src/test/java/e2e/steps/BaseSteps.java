@@ -28,34 +28,29 @@ import e2e.utilities.DriverManager;
 
 public class BaseSteps {
 
+    private final Logger log = Logger.getLogger(BaseSteps.class);
+
+    public static ECSDigitalTestPage ecsDigitalTestPage;
+
     private WebDriver driver;
     private Properties Config = new Properties();
     private FileInputStream fis;
-    public Logger log = Logger.getLogger(BaseSteps.class);
-    public boolean grid = true;
-
-
     private WebDriverWait waitDriver;
-    public static ECSDigitalTestPage ecsDigitalTestPage;
-
 
     public void setUpFramework() {
 
         configureLogging();
 
-
         DriverFactory.setConfigPropertyFilePath(Constant.CONFIG_PROPERTIES_DIRECTORY);
         try {
             fis = new FileInputStream(DriverFactory.getConfigPropertyFilePath());
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         try {
             Config.load(fis);
             log.info("Config properties file loaded");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -66,12 +61,9 @@ public class BaseSteps {
 
         } else {
 
-
             DriverFactory.setChromeDriverExePath(Constant.CHROME_DRIVER_DIRECTORY_WINDOWS);
             DriverFactory.setGeckoDriverExePath(Constant.GECKO_DRIVER_DIRECTORY_WINDOWS);
-
         }
-
 
         DriverFactory.setGridPath(Config.getProperty("grid.path"));
         ecsDigitalTestPage = PageFactory.initElements(driver, ECSDigitalTestPage.class);
@@ -91,7 +83,7 @@ public class BaseSteps {
 
     public void openBrowser(String browser) {
 
-        grid = Boolean.parseBoolean(Config.getProperty("grid"));
+        boolean grid = Boolean.parseBoolean(Config.getProperty("grid"));
 
         DriverFactory.setRemote(grid);
 
@@ -119,7 +111,6 @@ public class BaseSteps {
             try {
                 driver = new RemoteWebDriver(new URL(DriverFactory.getGridPath()), cap);
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -138,7 +129,6 @@ public class BaseSteps {
 
         DriverManager.setWebDriver(driver);
         log.info("Driver Initialized !!!");
-//		DriverManager.getDriver().manage().window().maximize();
         DriverManager.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         waitDriver = new WebDriverWait(DriverManager.getDriver(), 3000);
 
@@ -151,7 +141,7 @@ public class BaseSteps {
     }
 
 
-    public WebDriverWait getWaitDriver(){
+    public WebDriverWait getWaitDriver() {
         return waitDriver;
     }
 

@@ -18,9 +18,13 @@ import e2e.utilities.DriverManager;
 
 public class ExtentManager {
 
-    static ExtentReports extent;
-    static Date d = new Date();
-    static String fileName = "Extent_" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
+    private static ExtentReports extent;
+    private static Date d = new Date();
+    private static String fileName = "Extent_" + d.toString().replace(":", "_").replace(" ", "_") + ".html";
+
+    static String lastCapturedScreenName;
+
+    private static int lastCapturedScreenIndex = 0;
 
     public synchronized static ExtentReports getReporter() {
         if (extent == null) {
@@ -43,26 +47,18 @@ public class ExtentManager {
         return extent;
     }
 
-
-    public static String screenshotPath;
-    public static String screenshotName;
-    static int i = 0;
-
     public static void captureScreenshot() {
-        i = i + 1;
+        lastCapturedScreenIndex = lastCapturedScreenIndex + 1;
         File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 
         Date d = new Date();
-        screenshotName = d.toString().replace(":", "_").replace(" ", "_") + "_" + i + ".jpg";
+        lastCapturedScreenName = d.toString().replace(":", "_").replace(" ", "_") + "_" + lastCapturedScreenIndex + ".jpg";
 
         try {
-            FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "/reports/" + screenshotName));
+            FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "/reports/" + lastCapturedScreenName));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-
     }
 
 }
