@@ -32,14 +32,4 @@ public class Constant {
 	public final static String LOG4J_CONFIG_DIRECTORY = PATH 
 			+ "/src/test/resources/properties/log4j.properties"; 
 
-	public final static String EXTENT_REPORT_FILE = PATH 
-			+ "/src/test/resources/extent-config.xml";
-
-	public final static String EXTENT_REPORT_CONFIG_DIRECTORY = PATH 
-			+ "/src/test/resources/extentconfig/ReportsConfig.xml"; 
-	
-	public final static String EXTENT_REPORT_CONFIG= PATH 
-			+ "/target/Extent_Reports/"; 
-	
-
 }
