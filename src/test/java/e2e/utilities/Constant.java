@@ -18,16 +18,16 @@ public class Constant {
 			+ "/src/test/resources/properties/Config.properties";
 
 	public final static String GECKO_DRIVER_DIRECTORY = PATH
-			+ "/src/test/resources/executables/geckodriver";
+			+ "/src/test/resources/grid/geckodriver";
 
 	public final static String CHROME_DRIVER_DIRECTORY = PATH
-			+ "/src/test/resources/executables/chromedriver";
+			+ "/src/test/resources/grid/chromedriver";
 	
 	public final static String GECKO_DRIVER_DIRECTORY_WINDOWS = PATH 
-			 + "//src//test//resources//executables//geckodriver.exe";
+			 + "//src//test//resources//grid//geckodriver.exe";
 
 	public final static String CHROME_DRIVER_DIRECTORY_WINDOWS = PATH
-			 + "//src//test//resources//executables//chromedriver.exe";
+			 + "//src//test//resources//grid//chromedriver.exe";
 	
 	public final static String LOG4J_CONFIG_DIRECTORY = PATH 
 			+ "/src/test/resources/properties/log4j.properties"; 
