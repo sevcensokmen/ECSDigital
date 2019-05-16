@@ -41,3 +41,10 @@ To run the tests locally with
 $ mvn test
 ```
 
+## Notes ##
+The messages given by system when the user enters correct values work wrongly.
+
+System gives successfully and unsuccessfully messages together. First message is 
+ `It looks like your answer wasn't quite right` and the following message is `Congratulations you have succeeded. Please submit your challenge`
+ I ignore this situation
+    
