@@ -1,6 +1,6 @@
 ## Coding Test
 This project shows how to use selenium framework to test given example project.
-The algorithm used in the project only works for possitive numbers. 
+The algorithm used in the project only works for positive numbers. 
 
 ---
 ## Installation
