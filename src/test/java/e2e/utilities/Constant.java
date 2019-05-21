@@ -30,6 +30,9 @@ public class Constant {
 			 + "//src//test//resources//grid//chromedriver.exe";
 	
 	public final static String LOG4J_CONFIG_DIRECTORY = PATH 
-			+ "/src/test/resources/properties/log4j.properties"; 
+			+ "/src/test/resources/properties/log4j.properties";
+
+	public final static String EXTENDS_FILE_DIRECTORY = PATH
+			+ "/reports/";
 
 }
