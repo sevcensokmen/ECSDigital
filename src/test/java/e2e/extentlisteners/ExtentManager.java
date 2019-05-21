@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
+import e2e.utilities.Constant;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -29,7 +30,7 @@ public class ExtentManager {
     public synchronized static ExtentReports getReporter() {
         if (extent == null) {
 
-            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + "/reports/" + fileName);
+            ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(Constant.EXTENDS_FILE_DIRECTORY + fileName);
 
             htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
             htmlReporter.config().setChartVisibilityOnOpen(true);
@@ -40,9 +41,9 @@ public class ExtentManager {
 
             extent = new ExtentReports();
             extent.attachReporter(htmlReporter);
-            extent.setSystemInfo("Automation Tester", "Rahul Arora");
-            extent.setSystemInfo("Organization", "Way2Automation");
-            extent.setSystemInfo("Build no", "W2A-1234");
+            extent.setSystemInfo("Automation Tester", "Sevcen Sokmen");
+            extent.setSystemInfo("Organization", "ECSDigital");
+            extent.setSystemInfo("Build no", "1");
         }
         return extent;
     }
@@ -55,7 +56,7 @@ public class ExtentManager {
         lastCapturedScreenName = d.toString().replace(":", "_").replace(" ", "_") + "_" + lastCapturedScreenIndex + ".jpg";
 
         try {
-            FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir") + "/reports/" + lastCapturedScreenName));
+            FileUtils.copyFile(scrFile, new File(Constant.EXTENDS_FILE_DIRECTORY+ lastCapturedScreenName));
         } catch (IOException e) {
             e.printStackTrace();
         }
